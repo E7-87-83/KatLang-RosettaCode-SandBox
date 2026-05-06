@@ -1,5 +1,3 @@
-open PlaneVec
-PlaneVec = {
     public _x = 0
     public _y = 1
     public Vector = (x,y)
@@ -9,14 +7,4 @@ PlaneVec = {
     public Subtract = Vector(Add(a,Neg(b)))
     public DotProd = a:_x*b:_x + a:_y*b:_y
     public Norm = DotProd(v,v)
-    // public Magnitude = Math.Sqrt(Norm(v))
-}
-A = Vector(3,4)
-B = Vector(7,8)
-DotProd(A,B)
-Add(A,B)
-Neg(A)
-Subtract(A,B)
-Norm(A)
-Scale(A,10)
-// Magnitude(A)
+    public Magnitude = Math.Sqrt(Norm(v))
