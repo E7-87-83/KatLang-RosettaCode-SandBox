@@ -1,0 +1,8 @@
+open Vec
+
+q0 = 3.2 * 10^-19
+v0 = Scale(Vector(2.0, -3.0, 1.0), 10^4)
+B0 = Vector(0,0,1.5)
+LorentzForce = CrossProd(Scale(Velocity~, Charge), MagneticField)
+LorentzForce(q0,v0,B0)
+Math.Sqrt(Norm(LorentzForce(q0,v0,B0))) // Magnitude(LorentzForce(q0,v0,B0))
