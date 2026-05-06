@@ -1,0 +1,25 @@
+```
+open Vec
+Vec = {
+    public _x = 0
+    public _y = 1
+    public _z = 2
+    public Vector = (x,y,z)
+    public Neg = Vector(-v:_x, -v:_y, -v:_z)
+    public Add = Vector(a:_x+b:_x, a:_y+b:_y, a:_z+b:_z)
+    public Subtract = Vector(Add(a,Neg(b)))
+    public CrossProd = Vector(a:_y*b:_z - a:_z*b:_y, a:_z*b:_x - a:_x*b:_z, a:_x*b:_y - a:_y*b:_x)
+    // public DotProd = (a:_x*b:_x, a:_y*b:_y, a:_z*b:_z).sum
+    public DotProd = a:_x*b:_x + a:_y*b:_y + a:_z*b:_z
+    public Norm = DotProd(v,v)
+    // public Magnitude = Math.Sqrt(Norm(v))
+}
+A = Vector(3,4,5)
+B = Vector(7,8,9)
+CrossProd(A,B)
+DotProd(A,B)
+Add(A,B)
+Neg(A)
+Subtract(A,B)
+// Magnitude(A)
+```
