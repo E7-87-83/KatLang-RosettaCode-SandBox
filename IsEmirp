@@ -1,0 +1,13 @@
+IsPrime = {
+    Step = {
+        k+1, s + if(n mod k == 0, 1, 0), k <= n div 2 and s <= 0
+    }
+    n > 1 and Step.while(2,0):1 == 0
+}
+
+Reverse = {
+    Step = Math.Floor(n / 10), rev * 10 + n mod 10, n > 0
+    Step.while(x, 0):1
+}
+
+IsEmirp = m > 11 and IsPrime(m) and IsPrime(Reverse(m))
