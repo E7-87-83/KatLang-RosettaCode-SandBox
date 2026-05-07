@@ -1,0 +1,58 @@
+// Suppose you have a sequence of integers, starting with 1. Each integer that gets added to the sequence must be greater than all previous terms, and must have the property that when added, there is no subsequence that will sum to a prime number. Generate the first 10 terms of the sequence.
+
+
+// assumed the smallest valid next term is chosen greedily
+IsPrime(n) = {
+    N = n
+    HasDivisor = N mod divisor == 0
+
+    if(
+        N < 2,
+        0,
+        if(
+            N == 2,
+            1,
+            if(
+                N mod 2 == 0,
+                0,
+                if(
+                    N < 9,
+                    1,
+                    range(3, Math.Floor(Math.Sqrt(N))).filter(HasDivisor).count == 0
+                )
+            )
+        )
+    )
+}
+
+AddTermSums(term, sums) = {
+    Term = term
+    Combined = sums.ungroup; sums.ungroup.map{partial + Term}
+
+    (Combined.distinct)
+}
+
+SubsetSums(values...) = values.reduce(AddTermSums, (0))
+
+CandidateAllowed(history, candidate) = {
+    Candidate = candidate
+    ShiftedSums = SubsetSums(history.ungroup).ungroup.map{partial + Candidate}
+
+    ShiftedSums.filter(IsPrime).count == 0
+}
+
+FindNextStep(candidate, history) = {
+    Allowed = CandidateAllowed(history, candidate)
+
+    if(Allowed, candidate, candidate + 1),
+    history,
+    not Allowed
+}
+
+FindNext = FindNextStep.while(last(history.ungroup) + 1, history):0
+
+AppendNext(history) = (history.ungroup; FindNext(history))
+
+FirstTerms = AppendNext.repeat(termCount - 1, (1)).ungroup
+
+FirstTerms(7)
