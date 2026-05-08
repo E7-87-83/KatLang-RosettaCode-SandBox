@@ -1,0 +1,12 @@
+// Gcd using a while loop
+
+GcdStep = b, ~a mod b, a mod b != 0
+Gcd = GcdStep.while(a, b):1
+
+// ====
+// ====
+// ====
+
+// Recursive Gcd
+Gcd(n,0) = n
+Gcd(a,b) = if(a<b, Gcd(b,a), Gcd(b, a mod b))
